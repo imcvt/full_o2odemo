@@ -18,15 +18,15 @@ public class ShopAuthServiceTest extends BaseTest {
 
 	@Test
 	public void testUpdateShopAuthMap() {
-		Long shopAuthId = 1L;
+		Long shopAuthId = 13L;
 		String title = "CEO";
 		Integer titleFlag = 2;
-		Integer enableStatus = null;
+		Integer shopid = null;
 		ShopAuthMap shopAuthMap = new ShopAuthMap();
 		shopAuthMap.setShopAuthId(shopAuthId);
 		shopAuthMap.setTitle(title);
 		shopAuthMap.setTitleFlag(titleFlag);
-		shopAuthMap.setEnableStatus(enableStatus);
+		shopAuthMap.setShopId(15L);
 		ShopAuthMapExecution same = shopAuthService
 				.modifyShopAuthMap(shopAuthMap);
 		assertEquals(ShopAuthMapStateEnum.SUCCESS.getState(), same.getState());
@@ -38,10 +38,10 @@ public class ShopAuthServiceTest extends BaseTest {
 				.listShopAuthMapByShopId(1L, 2, 1);
 		List<ShopAuthMap> shopAuthMapList = shopAuthMapExecution
 				.getShopAuthMapList();
-		assertEquals(1, shopAuthMapList.size());
+		assertEquals(0, shopAuthMapList.size());
 		shopAuthMapExecution = shopAuthService
 				.listShopAuthMapByShopId(1L, 1, 2);
 		shopAuthMapList = shopAuthMapExecution.getShopAuthMapList();
-		assertEquals(2, shopAuthMapList.size());
+		assertEquals(0, shopAuthMapList.size());
 	}
 }

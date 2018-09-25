@@ -32,14 +32,14 @@ public class JedisUtilTest extends BaseTest {
 	@Test
 	public void testSetListAndGetList() throws Exception {
 		ObjectMapper mapper = new ObjectMapper();
-		WechatAuth wechatAuth = wechatAuthDao.queryWechatInfoByOpenId("ddfaz");
+		WechatAuth wechatAuth = wechatAuthDao.queryWechatInfoByOpenId("ovLbns-gxJHqC-UTPQKvgEuENl-E");
 		List<WechatAuth> wechatAuthList = new ArrayList<WechatAuth>();
 		wechatAuthList.add(wechatAuth);
 		String jsonString = mapper.writeValueAsString(wechatAuthList);
 		System.out.println(jsonString);
 		jedisStrings.set("shopCategoryList", jsonString);
 		String scListString = jedisStrings.get("shopCategoryList");
-		System.out.println(scListString);		
+		System.out.println("jedisget-->"+scListString);
 		JavaType javaType = mapper.getTypeFactory().constructParametricType(
 				ArrayList.class, WechatAuth.class);
 		wechatAuthList = mapper.readValue(scListString, javaType);
